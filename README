@@ -1,0 +1,8 @@
+To pull to a new machine:
+    cd ~
+    git init
+    git remote add origin git@github.com:coreyja/example-dotfiles.git
+    git fetch
+    git checkout -b main
+    git reset --mixed origin/main
+
