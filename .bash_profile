@@ -23,6 +23,7 @@ if [[ ! -e ~/.local/bin/nvim ]]; then
     wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
     mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
     chmod 770 ~/.local/bin/nvim
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 
 export PATH="$PATH:/home/cushorts/.local/bin"
