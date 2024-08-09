@@ -3,6 +3,7 @@
 !.bash_profile
 !.aliases
 !.bashrc
+!.vimrc
 !.gitignore
 !.config/nvim
 
