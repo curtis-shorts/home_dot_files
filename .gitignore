@@ -1,9 +1,8 @@
 *
 
-!README
 !.bash_profile
 !.aliases
 !.bashrc
 !.gitignore
-!.config
-!LICENSE
+!.config/nvim
+
