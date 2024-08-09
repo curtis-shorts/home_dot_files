@@ -13,6 +13,8 @@ if [[ `uname` == "Darwin" ]]; then
     alias python='python3'
     alias py='python3'
     alias pip='pip3'
+elif [[ -f ~/.bashrc ]]; then
+    source ~/.bashrc
 fi
 
 ##### NVIM CONFIG #####
@@ -24,9 +26,4 @@ if [[ ! -e ~/.local/bin/nvim ]]; then
 fi
 
 export PATH="$PATH:/home/cushorts/.local/bin"
-
-##### MISC #####
-#if [[ -f ~/.bashrc ]]; then
-#    source ~/.bashrc
-#fi
 
