@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # See /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 # See bash(1) for more options
-export DAILY_DRAC_PASSWORD="346968529"
+export DAILY_DRAC_PASSWORD="203827094"
 
 # If not running interactively, don't do anything
 case $- in

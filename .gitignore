@@ -5,6 +5,5 @@
 !.aliases
 !.bashrc
 !.gitignore
-!.config/nvim
-.config/nvim/plugin
+!.config
 !LICENSE
