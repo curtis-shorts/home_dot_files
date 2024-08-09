@@ -1,3 +1,5 @@
+Source - https://coreyja.com/posts/dotfiles-git-in-home-dir/
+
 To pull to a new machine:
     cd ~
     git init
