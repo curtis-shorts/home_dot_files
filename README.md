@@ -1,4 +1,5 @@
 This repo is setup to make my dot files easily transferable to any machine
+
 Setup with tutorial from https://coreyja.com/posts/dotfiles-git-in-home-dir/
 
 Command to setup this repo in your home directory:
