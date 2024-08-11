@@ -13,17 +13,21 @@ if [[ `uname` == "Darwin" ]]; then
     alias python='python3'
     alias py='python3'
     alias pip='pip3'
-elif [[ -f ~/.bashrc ]]; then
+fi
+
+##### Source .bashrc #####
+if [[ -f ~/.bashrc ]]; then
     source ~/.bashrc
 fi
 
 ##### NVIM CONFIG #####
 if [[ ! -e ~/.local/bin/nvim ]]; then
-    echo "Installing nvim at ~/.local/bin/nvim"
-    wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-    mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
-    chmod 770 ~/.local/bin/nvim
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    echo "Nvim is not installed at ~/.local/bin/nvim. Setup nvim and packer with the following commands:"
+    echo "wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage"
+    echo "mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim"
+    echo "chmod 770 ~/.local/bin/nvim"
+    echo "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    echo "In nvim run ':PackerSync'"
 fi
 
 export PATH="$PATH:/home/cushorts/.local/bin"

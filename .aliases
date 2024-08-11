@@ -36,13 +36,11 @@ alias ddu='du -hs ./*'
 
 ############################## Custom Commands ##############################
 # DRAC ssh auto-password entry
-if [[ -z SSH_CONNECTION ]]; then
+if [[ -z $SSH_CONNECTION ]]; then
     alias dssh='/Users/cushorts/workspace/bin/drac_login.export $DAILY_DRAC_PASSWORD ssh'
     alias dscp='/Users/cushorts/workspace/bin/drac_login.export $DAILY_DRAC_PASSWORD scp'
 fi
 
 # Alias for if SLURM is installed on the system
-if [[ `sinfo -V` ]]; then
-    alias wsq='watch -n 1 sq'
-fi
+alias wsq='watch -n 1 sq'
 
