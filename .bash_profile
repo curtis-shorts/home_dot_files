@@ -20,15 +20,5 @@ if [[ -f ~/.bashrc ]]; then
     source ~/.bashrc
 fi
 
-##### NVIM CONFIG #####
-if [[ ! -e ~/.local/bin/nvim ]]; then
-    echo "Nvim is not installed at ~/.local/bin/nvim. Setup nvim and packer with the following commands:"
-    echo "wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage"
-    echo "mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim"
-    echo "chmod 770 ~/.local/bin/nvim"
-    echo "git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
-    echo "In nvim run ':PackerSync'"
-fi
-
+##### Update PATH #####
 export PATH="$PATH:/home/cushorts/.local/bin"
-
