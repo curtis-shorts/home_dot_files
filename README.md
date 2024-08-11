@@ -1,6 +1,4 @@
-This repo is setup to make my dot files easily transferable to any machine
-
-Setup with tutorial from https://coreyja.com/posts/dotfiles-git-in-home-dir/
+This repo is setup to make my dot files easily transferable to any machine.
 
 Command to setup this repo in your home directory:
 ```
@@ -20,3 +18,4 @@ mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
+Run ':PackerSync' in nvim after installing.
