@@ -23,8 +23,12 @@ HISTSIZE=1000 # The size of a terminal's history buffer in # of commands
 HISTFILESIZE=2000 # The size of the ~/.bash_history file in # of commands
 
 # Clean up vim undo files every 7 days
-find $HOME/.vim/undodir_vim -type f -mtime +7
-find $HOME/.vim/undodir_nvim -type f -mtime +7
+if [ -d  $HOME/.vim/undodir_vim ]; then
+    find $HOME/.vim/undodir_vim -type f -mtime +7 | xargs rm
+fi
+if [ -d $HOME/.vim/undodir_vim ]; then
+    find $HOME/.vim/undodir_nvim -type f -mtime +7 | xargs rm
+fi
 
 # Show all options when tab autocomplete is ambiguous
 set show-all-if-ambiguous on
