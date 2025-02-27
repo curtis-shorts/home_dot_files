@@ -6,4 +6,6 @@
 !.vimrc
 !.gitignore
 !.config/nvim
+!.config/vim
+!.vim/colors
 
