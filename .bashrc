@@ -3,7 +3,7 @@
 # See bash(1) for more options
 
 # For DRAC SSH tunneling
-export DAILY_DRAC_PASSWORD="918258106"
+export DAILY_DRAC_PASSWORD="354520086"
 
 # If not running interactively, don't do anything
 case $- in

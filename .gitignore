@@ -5,6 +5,11 @@
 !.bashrc
 !.vimrc
 !.gitignore
-!.config/nvim
-!.config/vim
-!.vim/colors
+!.config/
+!.config/nvim/
+!.config/nvim/**
+!.config/vim/
+!.config/vim/**
+!.vim/
+!.vim/colors/
+!.vim/colors/**
