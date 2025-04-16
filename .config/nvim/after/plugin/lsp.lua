@@ -8,6 +8,7 @@ require('mason-lspconfig').setup({
         'jedi_language_server',
         'clangd',
         'cmake',
+        'texlab',
     },
   handlers = {
     lsp.default_setup,
@@ -15,6 +16,15 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+  }
+})
+
+require('lspconfig').texlab.setup({
+  root_dir = require('lspconfig.util').root_pattern('main.tex', '.git', '.latexmkrc'),
+  settings = {
+    texlab = {
+      -- your texlab config here
+    }
   }
 })
 

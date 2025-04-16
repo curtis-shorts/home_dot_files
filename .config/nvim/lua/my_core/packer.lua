@@ -1,31 +1,34 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
+    -- Packer (package manager)
     use 'wbthomason/packer.nvim'
-
-    -- Telescope
+    -- Telescope (fuzzy finder for file/dir searches)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
-        -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    -- File Browser Extension for Telescope
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
+    -- Catppuccin Theme Set
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- Rose Pine Theme
     use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
+        'rose-pine/neovim', as = 'rose-pine',
         config = function()
             vim.cmd('colorscheme rose-pine')
         end
     })
-    -- Treesitter
+    -- Treesitter (parser for code in the active file
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     -- UndoTree
     use('mbbill/undotree')
     -- Fugitive
     use('tpope/vim-fugitive')
     -- LSP_STUFF
-    --
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -61,7 +64,6 @@ return require('packer').startup(function(use)
         end
     }
     use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
-    use { "catppuccin/nvim", as = "catppuccin" }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }

@@ -1,4 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
+    -- A list of parser names
     ensure_installed = { "c", "lua", "vim", "python", "rust", "go", "fish", "bash", "cmake", "bibtex", "cpp", "cuda",
         "dockerfile", "gitignore", "html", "java", "javascript", "typescript", "json", "json5", "latex", "regex", "sql",
         "verilog", "yaml", "wgsl"},
