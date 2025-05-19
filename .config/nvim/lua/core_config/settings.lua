@@ -15,9 +15,15 @@ vim.opt.whichwrap:append("<,>")     -- When you pass EoL it takes you to the sta
 vim.opt.scrolloff = 15              -- The minimum number of lines to keep above and bellow the cursor when scrolling
 
 -- GUI presentation
-vim.opt.signcolumn = "yes"          -- The column where signs are displayed (used by debuggers, for denoting build errors etc.)
+--vim.opt.signcolumn = "yes"          -- The column where signs are displayed (used by debuggers, for denoting build errors etc.)
+vim.diagnostic.config({
+  virtual_text = true,  -- enable inline messages
+  signs = true,         -- enable signs in the gutter
+  underline = true,     -- underline the problematic code
+  update_in_insert = false,
+  severity_sort = true,
+})
 vim.opt.isfname:append("@-@")       -- Fixes issues with the displaying of file names (???)
-vim.opt.termguicolors = false       -- Enables colors in the terminal GUI (???)
 
 -- Data recovery
 vim.opt.swapfile = false            -- Use a swap file to buffer modified files (.swp)
@@ -29,4 +35,6 @@ vim.opt.updatetime = 50             -- If no activity occurs for this many ms th
 -- Searching
 vim.opt.hlsearch = true             -- Highlight searchs, toggle on/off with hls/nohl 
 vim.opt.incsearch = true            -- Dynamically show what matches the search as you type it 
+
+vim.opt.showtabline = 2 -- Always show the tabline (2 = always)
 

@@ -29,6 +29,13 @@ vim.keymap.set("n", "<leader>p", '"+p') -- "+p pastes from the external clipboar
 --  vim.opt.clipboard = 'unnamedplus'
 --end)
 
+-- Let the arrow keys move between wrapped lines of text (j/k for non-wrapped up/down)
+vim.keymap.set("n", "<down>", "gj")
+vim.keymap.set("n", "<up>", "gk")
+
+-- AST inspection
+vim.keymap.set("n", "<leader>it", ":InspectTree<CR>")
+
 -- Visual block movement
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Moves the selected visual block down one line
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Moves the selected visual block up one line
@@ -43,3 +50,4 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+

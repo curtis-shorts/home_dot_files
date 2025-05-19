@@ -34,6 +34,11 @@ alias dc='dirs -c'
 alias dff='df -h'
 alias ddu='du -hs ./*'
 
+# Tmux
+alias t='tmux'
+alias ts='tmux ls'
+alias ta='tmux new-session -A -s'
+
 ############################## Custom Commands ##############################
 # DRAC ssh auto-password entry
 if [[ -z $SSH_CONNECTION ]]; then

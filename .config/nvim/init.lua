@@ -1,1 +1,1 @@
-require("my_core")
+require("core_config")
