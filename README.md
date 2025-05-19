@@ -11,11 +11,9 @@ git checkout origin/main -- .gitignore
 git checkout -f
 ```
 
-Commands to install nvim and the packer package manager:
+Commands to install nvim:
 ```
-wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
+wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-Run ':PackerSync' in nvim after installing.
