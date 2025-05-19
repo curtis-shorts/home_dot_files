@@ -3,7 +3,7 @@
 # See bash(1) for more options
 
 # For DRAC SSH tunneling
-export DAILY_DRAC_PASSWORD="354520086"
+export DAILY_DRAC_PASSWORD=""
 
 # If not running interactively, don't do anything
 case $- in
@@ -59,6 +59,16 @@ fi
 # ls coloring for Mac, modify at https://geoff.greer.fm/lscolors/
 if [[ `uname` == "Darwin" ]]; then
     export LSCOLORS="gxfxcxdxbxegedabagacad"
+fi
+
+if ! command -v some_command &> /dev/null; then
+    if [[ `uname` == "Linux" ]]; then
+        wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+        mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
+        chmod 770 ~/.local/bin/nvim
+    elif [[ `uname` != "Darwin" ]]; then
+        echo "WARNING: OS not recognized, could not install nvim"
+    fi
 fi
 
 # Enable programmable completion features (you don't need to enable this, if it's already
