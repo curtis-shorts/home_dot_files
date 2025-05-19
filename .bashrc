@@ -72,7 +72,7 @@ if ! command -v nvim &> /dev/null; then
         fi
     fi
     if [[ -f ~/.local/bin/nvim ]]; then
-        nvim=~/.local/bin/nvim
+        alias nvim='~/.local/bin/nvim'
     fi
 fi
 
