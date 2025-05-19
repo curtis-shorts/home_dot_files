@@ -64,7 +64,8 @@ fi
 if ! command -v nvim &> /dev/null; then
     if [[ ! -f ~/.local/bin/nvim ]]; then
         if [[ `uname` == "Linux" ]]; then
-            wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+            #wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+            wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
             mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
             chmod 770 ~/.local/bin/nvim
         elif [[ `uname` != "Darwin" ]]; then
