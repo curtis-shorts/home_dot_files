@@ -61,22 +61,22 @@ if [[ `uname` == "Darwin" ]]; then
     export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
-if ! command -v nvim &> /dev/null; then
-    if [[ ! -f ~/.local/bin/nvim ]]; then
-        if [[ `uname` == "Linux" ]]; then
-            #wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
-            wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-            #mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
-            mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
-            chmod 770 ~/.local/bin/nvim
-        elif [[ `uname` != "Darwin" ]]; then
-            echo "WARNING: OS not recognized, could not install nvim"
-        fi
-    fi
-    if [[ -f ~/.local/bin/nvim ]]; then
-        alias nvim='~/.local/bin/nvim'
-    fi
-fi
+#if ! command -v nvim &> /dev/null; then
+#    if [[ ! -f ~/.local/bin/nvim ]]; then
+#        if [[ `uname` == "Linux" ]]; then
+#            #wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
+#            wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+#            #mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
+#            mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
+#            chmod 770 ~/.local/bin/nvim
+#        elif [[ `uname` != "Darwin" ]]; then
+#            echo "WARNING: OS not recognized, could not install nvim"
+#        fi
+#    fi
+#    if [[ -f ~/.local/bin/nvim ]]; then
+#        alias nvim='~/.local/bin/nvim'
+#    fi
+#fi
 
 # Enable programmable completion features (you don't need to enable this, if it's already
 #       enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
