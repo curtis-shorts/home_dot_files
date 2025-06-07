@@ -1,8 +1,14 @@
 ############################## Settings Handling ##############################
 alias s='source ~/.bashrc'
-alias aliases='vim ~/.aliases'
-alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
+if command -v nvim >/dev/null 2>&1; then
+    alias aliases='nvim ~/.aliases'
+    alias bashrc='nvim ~/.bashrc'
+    alias vimrc='nvim ~/.vimrc'
+else
+    alias aliases='vim ~/.aliases'
+    alias bashrc='vim ~/.bashrc'
+    alias vimrc='vim ~/.vimrc'
+fi
 
 ############################## Tools ##############################
 alias v='vim'
