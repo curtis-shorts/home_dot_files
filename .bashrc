@@ -11,6 +11,9 @@ case $- in
       *) return;;
 esac
 
+# DRAC modules to load
+module load nodejs/20.16.0 # Required for buffer manipulation in nvim
+
 # PATH updates
 export PATH="$PATH:/home/cushorts/.local/bin"
 
