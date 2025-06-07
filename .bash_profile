@@ -19,10 +19,4 @@ fi
 if [[ -f ~/.bashrc ]]; then
     source ~/.bashrc
 fi
-if [[ -f ~/.aliases ]]; then
-    . ~/.aliases
-fi
-
-##### Update PATH #####
-export PATH="$PATH:/home/cushorts/.local/bin"
 

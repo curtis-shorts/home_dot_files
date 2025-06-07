@@ -105,6 +105,7 @@ return {
                     'clangd',
                     'lua_ls',
                     'cmake',
+                    'bashls',
                     --'texlab',
                     'ltex',
                     'jedi_language_server',

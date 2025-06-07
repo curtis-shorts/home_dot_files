@@ -11,6 +11,9 @@ case $- in
       *) return;;
 esac
 
+# PATH updates
+export PATH="$PATH:/home/cushorts/.local/bin"
+
 # Aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
@@ -19,16 +22,8 @@ fi
 # History Settings
 HISTCONTROL=ignoreboth # Ignore leading spaces
 shopt -s histappend # Append to the end of ~/.bash_history instead of overwriting
-HISTSIZE=1000 # The size of a terminal's history buffer in # of commands
-HISTFILESIZE=2000 # The size of the ~/.bash_history file in # of commands
-
-# Clean up vim undo files every 7 days
-if [ -d  $HOME/.vim/undodir_vim ]; then
-    find $HOME/.vim/undodir_vim -type f -mtime +7 | xargs rm
-fi
-if [ -d $HOME/.vim/undodir_vim ]; then
-    find $HOME/.vim/undodir_nvim -type f -mtime +7 | xargs rm
-fi
+HISTSIZE=10000 # The size of a terminal's history buffer in # of commands
+HISTFILESIZE=100000 # The size of the ~/.bash_history file in # of commands
 
 # Show all options when tab autocomplete is ambiguous
 set show-all-if-ambiguous on
@@ -61,23 +56,6 @@ if [[ `uname` == "Darwin" ]]; then
     export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
 
-#if ! command -v nvim &> /dev/null; then
-#    if [[ ! -f ~/.local/bin/nvim ]]; then
-#        if [[ `uname` == "Linux" ]]; then
-#            #wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
-#            wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-#            #mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
-#            mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
-#            chmod 770 ~/.local/bin/nvim
-#        elif [[ `uname` != "Darwin" ]]; then
-#            echo "WARNING: OS not recognized, could not install nvim"
-#        fi
-#    fi
-#    if [[ -f ~/.local/bin/nvim ]]; then
-#        alias nvim='~/.local/bin/nvim'
-#    fi
-#fi
-
 # Enable programmable completion features (you don't need to enable this, if it's already
 #       enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
@@ -87,5 +65,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 
