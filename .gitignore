@@ -10,6 +10,8 @@
 !.config/nvim/**
 !.config/vim/
 !.config/vim/**
+!.config/alacritty/
+!.config/alacritty/**
 !.vim/
 !.vim/colors/
 !.vim/colors/**
