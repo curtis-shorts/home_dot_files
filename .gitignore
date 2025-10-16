@@ -4,6 +4,7 @@
 !.aliases
 !.bashrc
 !.vimrc
+!.tmux.conf
 !.gitignore
 !.config/
 !.config/nvim/

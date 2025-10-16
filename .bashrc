@@ -33,7 +33,7 @@ shopt -s checkwinsize
 
 # Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color|alacritty) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # Set custom command prompt, test custom color codes  with:
