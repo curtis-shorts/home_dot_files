@@ -80,6 +80,7 @@ if [[ $(hostname) == *kronos* ]]; then
         alias tt='cd /opt/tt/tt-metal; source python_env/bin/activate'
         alias inf='cd /opt/tt/tt-inference-server'
         export HF_HOME="/scratch/huggingface"
+        export UV_CACHE_DIR="/scratch/uv_cache"
     fi
 fi
 
