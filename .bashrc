@@ -69,3 +69,20 @@ fi
 export PATH=/home/cushorts/workspace/cerebras_sdk/sdk_install/cs_sdk:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+if [[ $(hostname) == *kronos* ]]; then
+    PATH+=:/usr/local/cuda-12.6/bin
+    if [[ -f "~/.spack/spack/share/spack/setup-env.sh" ]]; then
+        source ~/.spack/spack/share/spack/setup-env.sh
+    fi
+    if [[ -f "~/.cargo/env" ]]; then
+        . "~/.cargo/env"
+    fi
+    if [[ -d "/opt/tt" ]]; then
+        alias tt='cd /opt/tt/tt-metal; source python_env/bin/activate'
+        alias inf='cd /opt/tt/tt-inference-server'
+        export HF_HOME="/scratch/huggingface"
+        export UV_CACHE_DIR="/scratch/uv_cache"
+    fi
+fi
+
+

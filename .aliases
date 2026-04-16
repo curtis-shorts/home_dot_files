@@ -30,6 +30,9 @@ alias h='history'
 alias c='clear'
 alias j='jobs'
 
+# follow the whole file on a tail
+alias tf='tail -c +1 -f'
+
 # Directory stack
 alias pu='pushd .'
 alias po='popd'
