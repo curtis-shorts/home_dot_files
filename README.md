@@ -17,7 +17,6 @@ Commands to install nvim:
 ```
 wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.appimage
 mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
-mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
 ```
 Remember to check 'which nvim' and that 'tree-sitter-cli', 'node', and 'npm' are installed
