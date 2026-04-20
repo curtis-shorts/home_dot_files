@@ -86,11 +86,40 @@ return {
             "Gedit",
         },
         keys = {
-            { "<leader>gg",  "<cmd>Git<cr>",                  desc = "Git status (fugitive)" },
+            {
+                "<leader>gg",
+                function()
+                    vim.cmd("vertical leftabove Git")
+                    vim.cmd("vertical resize 40")
+                end,
+                desc = "Git status (left)",
+            },
+            {
+                "<leader>gb",
+                function()
+                    local start_line, end_line
+                    local mode = vim.fn.mode()
+                    if mode == "V" or mode == "v" or mode == "\22" then
+                        start_line = vim.fn.line("v")
+                        end_line = vim.fn.line(".")
+                        if start_line > end_line then
+                            start_line, end_line = end_line, start_line
+                        end
+                    else
+                        start_line = vim.fn.line(".")
+                        end_line = start_line
+                    end
+                    vim.cmd("belowright Git blame -L " .. start_line .. "," .. end_line)
+                    --vim.cmd("wincmd H")
+                    vim.cmd("horizontal resize 10")
+                end,
+                mode = { "n", "v" },
+                desc = "Git blame selected lines (bottom)",
+            },
+            --{ "<leader>gb",  "<cmd>Git blame<cr>",            desc = "Git blame (full)" },
             { "<leader>gG",  "<cmd>Git log --oneline<cr>",    desc = "Git log" },
             { "<leader>gdd", "<cmd>Gdiffsplit<cr>",           desc = "Diff split" },
             { "<leader>gdv", "<cmd>Gvdiffsplit<cr>",          desc = "Diff vsplit" },
-            { "<leader>gb",  "<cmd>Git blame<cr>",            desc = "Git blame (full)" },
             { "<leader>gB",  "<cmd>GBrowse<cr>",              desc = "Browse on remote" },
             { "<leader>gc",  "<cmd>Git commit<cr>",           desc = "Git commit" },
             { "<leader>gC",  "<cmd>Git commit --amend<cr>",   desc = "Git commit amend" },
