@@ -12,7 +12,7 @@ vim.opt.relativenumber = true       -- Show the line number relative to the line
 vim.opt.colorcolumn:append("80")    -- Set a column number to be colored (inidcates code refactoring required)
 vim.opt.wrap = false                -- Sets if the line wraps around when it hits the right margin
 vim.opt.whichwrap:append("<,>")     -- When you pass EoL it takes you to the start of the next line (arrow keys only)
-vim.opt.scrolloff = 15              -- The minimum number of lines to keep above and bellow the cursor when scrolling
+--moved to mappings.lua: vim.opt.scrolloff = 5  -- The minimum number of lines to keep above and bellow the cursor when scrolling
 
 -- GUI presentation
 --vim.opt.signcolumn = "yes"          -- The column where signs are displayed (used by debuggers, for denoting build errors etc.)

@@ -51,3 +51,11 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Funciton to toggle scrolloff (spacing between cursor and top/bottom of screen)
+local function toggle_scrolloff()
+  local enable = vim.o.scrolloff == 0
+  vim.opt_local.scrolloff = enable and 5 or 0
+end
+vim.keymap.set("n", "<leader>so", toggle_scrolloff, { desc = "Toggle scrolloff" })
+
+
