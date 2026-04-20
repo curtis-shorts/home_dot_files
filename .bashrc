@@ -67,6 +67,7 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=/home/cushorts/workspace/cerebras_sdk/sdk_install/cs_sdk:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ $(hostname) == *kronos* ]]; then
     PATH+=:/usr/local/cuda-12.6/bin
