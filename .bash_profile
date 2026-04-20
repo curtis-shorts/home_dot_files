@@ -13,6 +13,17 @@ if [[ `uname` == "Darwin" ]]; then
     alias python='python3'
     alias py='python3'
     alias pip='pip3'
+
+    _complete_ssh_hosts () {
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        # Extract hosts from config and known_hosts, ignoring wildcards
+        comp_ssh_hosts=$(grep -i "^Host " ~/.ssh/config | awk '{print $2}' | grep -v '*')
+        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+        return 0
+    }
+    complete -F _complete_ssh_hosts ssh
+
 fi
 
 ##### Source .bashrc #####

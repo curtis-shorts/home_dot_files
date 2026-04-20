@@ -20,6 +20,7 @@ mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
 mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
 ```
+Remember to check 'which nvim' and that 'tree-sitter-cli', 'node', and 'npm' are installed
 
 ## GLIBC Version Issues
 For systems with GLIBC version issues (e.g. DRAC), download nvim from the experimental release repo instead:

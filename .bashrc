@@ -67,6 +67,7 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=/home/cushorts/workspace/cerebras_sdk/sdk_install/cs_sdk:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ $(hostname) == *kronos* ]]; then
     PATH+=:/usr/local/cuda-12.6/bin
@@ -80,6 +81,7 @@ if [[ $(hostname) == *kronos* ]]; then
         alias tt='cd /opt/tt/tt-metal; source python_env/bin/activate'
         alias inf='cd /opt/tt/tt-inference-server'
         export HF_HOME="/scratch/huggingface"
+        export UV_CACHE_DIR="/scratch/uv_cache"
     fi
 fi
 

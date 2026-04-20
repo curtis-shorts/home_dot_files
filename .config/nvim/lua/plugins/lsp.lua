@@ -58,12 +58,13 @@ return {
     -- Mason LSP Config (a bridge between LSP Config and Mason)
     {
         'neovim/nvim-lspconfig',
+        version = "0.1.7",
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { 'williamboman/mason.nvim', version = "1.8.3" },
+            { 'williamboman/mason-lspconfig.nvim', version = "1.24.0" },
         },
         config = function()
             local lsp_defaults = require('lspconfig').util.default_config
