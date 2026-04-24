@@ -28,6 +28,7 @@ alias la='ls -ltrhA'
 # Lazy shorthands
 alias h='history'
 alias c='clear'
+alias e='exit'
 alias j='jobs'
 
 # follow the whole file on a tail

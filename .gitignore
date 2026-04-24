@@ -12,6 +12,7 @@
 !.config/nvim/**
 !.config/vim/
 !.config/vim/**
+!.config/fish/
 !.config/fish/**
 !.config/alacritty/
 !.config/alacritty/**
