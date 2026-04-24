@@ -4,6 +4,7 @@
 !.aliases
 !.bashrc
 !.vimrc
+!.inputrc
 !.tmux.conf
 !.gitignore
 !.config/

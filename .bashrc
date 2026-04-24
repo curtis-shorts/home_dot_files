@@ -24,6 +24,10 @@ HISTCONTROL=ignoreboth # Ignore leading spaces
 shopt -s histappend # Append to the end of ~/.bash_history instead of overwriting
 HISTSIZE=10000 # The size of a terminal's history buffer in # of commands
 HISTFILESIZE=100000 # The size of the ~/.bash_history file in # of commands
+# Commands to ignore in history file
+# Collect aliases to ignore (NOTE: won't match with args, e.g. lt <directory>)
+alias_list=`alias | sed -E "s/^alias ([^=]+)=.*/\1/" | perl -pe 's/\n/:/'`:test
+HISTIGNORE=${alias_list}ls:cd:pwd:exit:clear:history:top:htop:nvtop:tt-smi:deactivate:ta\ *
 
 # Show all options when tab autocomplete is ambiguous
 set show-all-if-ambiguous on
@@ -78,8 +82,6 @@ if [[ $(hostname) == *kronos* ]]; then
         . "~/.cargo/env"
     fi
     if [[ -d "/opt/tt" ]]; then
-        alias tt='cd /opt/tt/tt-metal; source python_env/bin/activate'
-        alias inf='cd /opt/tt/tt-inference-server'
         export HF_HOME="/scratch/huggingface"
         export UV_CACHE_DIR="/scratch/uv_cache"
     fi

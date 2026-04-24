@@ -1,0 +1,26 @@
+# For emacs mode bindings in terminal
+
+# Default reminders (https://gist.github.com/memphys/2225770)
+# NOTE: Esc takes the place of Opt compared to some of the normal defaults
+# Jumping:
+#   Opt + left arrow - jump back one word
+#   Opt + right arrow - jump forward one word
+#   Ctrl + a - jump to start of command
+#   Ctrl + e - jump to end of command
+# Deleting:
+#   Ctrl + w - delete to start of previous word
+#   Esc + d - delete to end of previous word
+#   Ctrl + u - delete to start of line
+#   Ctrl + k - delete to end of line
+#   Ctrl + y - paste previously deleted text
+# History:
+#   Ctrl + r - reverse search
+#   Ctrl + g - exit reverse search
+#   !<#>:gs/<foo>/<bar>/ - for previous command #, run with foo instead of bar
+# Other:
+#   Ctrl + l - move line to top of screen (preserves pane history)
+#   Ctrl + z - suspend current command
+#   Ctrl + c - terminate current command
+#   Esc + # - prepend a # to the command
+
+
