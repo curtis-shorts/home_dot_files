@@ -49,13 +49,14 @@ alias t='tmux'
 alias ts='tmux ls'
 alias ta='tmux new-session -A -s'
 
+# Slurm
+alias sq='squeue'
+alias wsq='watch -n 1 squeue'
+
 ############################## Custom Commands ##############################
 # DRAC ssh auto-password entry
 if [[ -z $SSH_CONNECTION ]]; then
     alias dssh='/Users/cushorts/workspace/drac_login.export $DAILY_DRAC_PASSWORD ssh'
     alias dscp='/Users/cushorts/workspace/drac_login.export $DAILY_DRAC_PASSWORD scp'
 fi
-
-# Alias for if SLURM is installed on the system
-alias wsq='watch -n 1 sq'
 
