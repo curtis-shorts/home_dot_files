@@ -2,17 +2,65 @@
 # See /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 # See bash(1) for more options
 
-# For DRAC SSH tunneling
-export DAILY_DRAC_PASSWORD=""
+# PATH updates
+export PATH+=$HOME/.local/bin
+export PATH+=$HOME/workspace/cerebras_sdk/sdk_install/cs_sdk
+export PATH+=/usr/local/cuda-12.6/bin
 
-# If not running interactively, don't do anything
+# MacOS config
+if [[ `uname` == "Darwin" ]]; then
+    # For homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # For "The default interactive shell is now zsh" shell warning
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
+    # For Python environment control with pyenv
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    alias python='python3'
+    alias py='python3'
+    alias pip='pip3'
+
+    # For autocompleting ssh requests from the ssh config hosts
+    _complete_ssh_hosts () {
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        # Extract hosts from config and known_hosts, ignoring wildcards
+        comp_ssh_hosts=$(grep -i "^Host " ~/.ssh/config | awk '{print $2}' | grep -v '*')
+        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+        return 0
+    }
+    complete -F _complete_ssh_hosts ssh
+fi
+
+# Kronos config
+if [[ $(hostname) == kronos-* ]]; then
+    if [[ -f "~/.cargo/env" ]]; then
+        . "~/.cargo/env"
+    fi
+    if [[ -d "/opt/shared/tt_ansible" && -d "/scratch/tt_ansible" ]]; then
+        export HF_HOME=/scratch/tt_ansible/huggingface
+        export UV_PYTHON_INSTALL_DIR=/scratch/tt_ansible/uv/python
+        export UV_INSTALL_DIR=/scratch/tt_ansible/uv/install
+        export UV_CACHE_DIR=/scratch/tt_ansible/uv/cache
+        export UV_LINK_MODE=copy
+        export VLLM_TARGET_DEVICE=tt
+        export PATH+=/opt/shared/tt_ansible/shared/tt-metal/python_env/bin
+        alias tt='cd /opt/shared/tt_ansible/tt-metal; source python_env/bin/activate'
+        alias inf='cd /opt/shared/tt/tt-inference-server'
+    fi
+fi
+
+# Only essential setup done if not running interactively
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# PATH updates
-export PATH="$PATH:/home/cushorts/.local/bin"
+# For DRAC SSH tunneling
+export DAILY_DRAC_PASSWORD=""
 
 # Aliases
 if [ -f ~/.aliases ]; then
@@ -68,23 +116,6 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-export PATH=/home/cushorts/workspace/cerebras_sdk/sdk_install/cs_sdk:$PATH
-export PATH="$HOME/.local/bin:$PATH"
-
-if [[ $(hostname) == *kronos* ]]; then
-    PATH+=:/usr/local/cuda-12.6/bin
-    if [[ -f "~/.spack/spack/share/spack/setup-env.sh" ]]; then
-        source ~/.spack/spack/share/spack/setup-env.sh
-    fi
-    if [[ -f "~/.cargo/env" ]]; then
-        . "~/.cargo/env"
-    fi
-    if [[ -d "/opt/tt" ]]; then
-        export HF_HOME="/scratch/huggingface"
-        export UV_CACHE_DIR="/scratch/uv_cache"
-    fi
 fi
 
 

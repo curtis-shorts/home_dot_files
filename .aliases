@@ -59,10 +59,3 @@ fi
 # Alias for if SLURM is installed on the system
 alias wsq='watch -n 1 sq'
 
-# For tenstorrent environments
-if [[ -d "/opt/tt" ]]; then
-    alias tt='cd /opt/tt/tt-metal; source python_env/bin/activate'
-    alias inf='cd /opt/tt/tt-inference-server'
-fi
-
-
