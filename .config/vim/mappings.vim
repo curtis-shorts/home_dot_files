@@ -16,10 +16,9 @@ nmap <leader>l <C-w>l<CR>   " Move right a pane
 nmap <leader>q <C-w>q<CR>   " Close the current pane
 
 " Copy/paste to/from the global keyboard
-nmap <leader>y \+y          " \"+y yanks to the external clipboard (y doesn't)
-vmap <leader>y \+y          " Support in visual and normal modes
-nmap <leader>Y \+Y          " Y is equivelent to yy 
-nmap <leader>p \+p          " \"+p pastes from the external clipboard (p is vim local)
+noremap  <leader>y "+y
+noremap  <leader>Y "+Y
+noremap  <leader>p "+p
 
 " Visual block movement
 vmap J :m '>+1<CR>gv=gv     " Moves the selected visual block down one line
