@@ -4,7 +4,7 @@ This repo exists to make my environment easily transferable to any machine.
 Commands to set up this repo in your home directory:
 ```
 git init
-git remote add origin https://github.com/curtis-shorts/home_dot_files
+git remote add origin github.com:curtis-shorts/home_dot_files
 git fetch
 git checkout -b main
 git reset --mixed origin/main
@@ -15,7 +15,7 @@ git checkout -f
 # Install NVIM
 Commands to install nvim:
 ```
-wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.appimage
+wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.12.1/nvim-linux-x86_64.appimage
 mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
 ```
@@ -32,7 +32,9 @@ Then add the following version dependencies in the ~/.config/nvim/lua/plugins/ls
 {'williamboman/mason.nvim', version = "1.8.3"},
 {'williamboman/mason-lspconfig.nvim', version = "1.24.0"},
 ```
-And install the treesitter CLI globally:
+
+## Treesitter install
+And install the treesitter CLI globally (can also do with apt/dnf, or cargo):
 ```
 npm install -g tree-sitter-cli
 ```
@@ -40,5 +42,9 @@ Or locally:
 ```
 npm install -g tree-sitter-cli --prefix ~/.local
 ```
-Note that this will still result in errors related to tree-sitter highlighting in Latex
+There may be build errors for building the Latex tree.
+To resolve, open this file and remove the tree-sitter options related to --no-bindings:
+```
+vim ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/install.lua
+```
 

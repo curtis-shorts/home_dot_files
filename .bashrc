@@ -2,10 +2,22 @@
 # See /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 # See bash(1) for more options
 
-# PATH updates
-export PATH+=$HOME/.local/bin
-export PATH+=$HOME/workspace/cerebras_sdk/sdk_install/cs_sdk
-export PATH+=/usr/local/cuda-12.6/bin
+# Helper function for PATH updates
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        # append to start if a second parameter is given, else append to end
+        if [[ -z $2 ]]; then
+            PATH="${PATH:+"$PATH:"}$1"
+        else
+            PATH="${PATH:+"$1:"}$PATH"
+        fi
+    fi
+}
+
+pathadd $HOME/.local/bin/ 1
+pathadd $HOME/workspace/cerebras_sdk/sdk_install/cs_sdk
+pathadd /usr/local/cuda-12.6/bin
+pathadd $HOME/.cargo/bin
 
 # MacOS config
 if [[ `uname` == "Darwin" ]]; then
@@ -16,8 +28,8 @@ if [[ `uname` == "Darwin" ]]; then
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
     # For Python environment control with pyenv
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    pathadd export $PYENV_ROOT/bin 1
+    command -v pyenv >/dev/null # || pathadd $PYENV_ROOT/bin
     eval "$(pyenv init -)"
     alias python='python3'
     alias py='python3'
@@ -47,7 +59,7 @@ if [[ $(hostname) == kronos-* ]]; then
         export UV_CACHE_DIR=/scratch/tt_ansible/uv/cache
         export UV_LINK_MODE=copy
         export VLLM_TARGET_DEVICE=tt
-        export PATH+=/opt/shared/tt_ansible/shared/tt-metal/python_env/bin
+        pathadd /opt/shared/tt_ansible/shared/tt-metal/python_env/bin
         alias tt='cd /opt/shared/tt_ansible/tt-metal; source python_env/bin/activate'
         alias inf='cd /opt/shared/tt/tt-inference-server'
     fi
