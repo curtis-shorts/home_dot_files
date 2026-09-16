@@ -15,7 +15,7 @@ git checkout -f
 # Install NVIM
 Commands to install nvim:
 ```
-wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.12.1/nvim-linux-x86_64.appimage
+wget --directory-prefix ~/.local/bin -c https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.appimage
 mv ~/.local/bin/nvim-linux-x86_64.appimage ~/.local/bin/nvim
 chmod 770 ~/.local/bin/nvim
 ```
