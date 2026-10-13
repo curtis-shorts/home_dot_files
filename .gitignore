@@ -16,6 +16,10 @@
 !.config/fish/**
 !.config/alacritty/
 !.config/alacritty/**
+!.config/tmux/
+!.config/tmux/**
+.config/tmux/plugins
+!.config/tmux/plugins/tpm
 !.vim/
 !.vim/colors/
 !.vim/colors/**
