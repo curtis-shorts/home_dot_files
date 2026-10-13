@@ -86,17 +86,16 @@ return {
                     -- Commands that act on the string actively under the cursor
                     -- Default cursors buffer actions typically implemented (varies by LSP):
                     --      https://lsp-zero.netlify.app/blog/lsp-config-overview.html
-                    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-                    vim.keymap.set('n', 'sh', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-                    vim.keymap.set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-                    vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-                    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-                    -- Go to x
-                    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-                    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-                    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-                    vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-                    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+                    vim.keymap.set('n', 'K',          '<cmd>lua vim.lsp.buf.hover()<cr>',opts,                {desc = 'LSP: Hover under cursor'})
+                    vim.keymap.set('n', 'sh',         '<cmd>lua vim.lsp.buf.signature_help()<cr>',opts,       {desc = 'LSP: Signature helper'})
+                    vim.keymap.set('n', 'rn',         '<cmd>lua vim.lsp.buf.rename()<cr>',opts,               {desc = 'LSP: Rename token'})
+                    vim.keymap.set({'n','x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>',opts, {desc = 'LSP: Format'})
+                    vim.keymap.set('n', '<F4>',       '<cmd>lua vim.lsp.buf.code_action()<cr>',opts,          {desc = 'LSP: Code action'})
+                    vim.keymap.set('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<cr>', opts,          {desc = 'LSP: Go to definition'})
+                    vim.keymap.set('n', 'gD',         '<cmd>lua vim.lsp.buf.declaration()<cr>', opts,         {desc = 'LSP: Go to declaration'})
+                    vim.keymap.set('n', 'gi',         '<cmd>lua vim.lsp.buf.implementation()<cr>', opts,      {desc = 'LSP: Go to implementation'})
+                    vim.keymap.set('n', 'gt',         '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts,     {desc = 'LSP: Go to type definition'})
+                    vim.keymap.set('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<cr>', opts,          {desc = 'LSP: Go to next reference'})
                 end,
             })
             require('mason-lspconfig').setup({

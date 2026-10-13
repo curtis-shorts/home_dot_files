@@ -48,6 +48,7 @@ alias duu='du -hs ./*'
 alias t='tmux'
 alias ts='tmux ls'
 alias ta='tmux new-session -A -s'
+alias tms='~/.config/tmux/scripts/tmux-sessionizer.sh'
 
 # Slurm
 alias sq='squeue'
@@ -59,4 +60,14 @@ if [[ -z $SSH_CONNECTION ]]; then
     alias dssh='/Users/cushorts/workspace/drac_login.export $DAILY_DRAC_PASSWORD ssh'
     alias dscp='/Users/cushorts/workspace/drac_login.export $DAILY_DRAC_PASSWORD scp'
 fi
+
+cheat() {
+    curl -s "cheat.sh/$1" | less -RX
+}
+
+tmux-restore() {
+    tmux new-session -d -s tmp
+    tmux run-shell ~/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh
+    tmux kill-session -t tmp
+}
 

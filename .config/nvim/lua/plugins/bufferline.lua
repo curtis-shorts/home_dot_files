@@ -4,19 +4,23 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
         -- Navigate buffers with Left/Right arrows
-        vim.keymap.set('n', "<leader><Left>", "<cmd>BufferLineCyclePrev<cr>")
-        vim.keymap.set('n', "<leader><Right>", "<cmd>BufferLineCycleNext<cr>")
+        vim.keymap.set('n', "<leader><Left>", "<cmd>BufferLineCyclePrev<cr>",   {desc="Bufferline: Cycle one buffer left"})
+        vim.keymap.set('n', "<leader><Right>", "<cmd>BufferLineCycleNext<cr>",  {desc="Bufferline: Cycle one buffer right"})
         -- Other commands
-        vim.keymap.set('n', "<leader>bp", "<cmd>BufferLinePick<cr>")
-        vim.keymap.set('n', "<leader>bc", "<cmd>BufferLinePickClose<cr>")
-        vim.keymap.set('n', "<leader>bs", "<cmd>BufferLineSortByDirectory<cr>")
+        vim.keymap.set('n', "<leader>bp", "<cmd>BufferLinePick<cr>",            {desc="Bufferline: Pick a buffer to jump to"})
+        vim.keymap.set('n', "<leader>bc", "<cmd>BufferLinePickClose<cr>",       {desc="Bufferline: Pick a buffer to close"})
+        vim.keymap.set('n', "<leader>bd", "<cmd>bd<cr>",                        {desc="Bufferline: Close the current buffer"})
+        vim.keymap.set('n', "<leader>bs", "<cmd>BufferLineSortByDirectory<cr>", {desc="Bufferline: Sort buffers by directory"})
+        -- Map <leader>1 through <leader>9 to go to the respective visible buffer
+        for i = 1, 9 do
+            vim.keymap.set('n', "<leader>" .. i, function()
+                require("bufferline").go_to_buffer(i, true)
+            end, { desc = "Bufferline: Jump to buffer " .. i })
+        end
         require("bufferline").setup({
             options = {
                 numbers = "none", -- "none" | "ordinal" | "buffer_id" | "both" | function
                 close_command = function(bufnum)
-                    -- You can use a custom function to delete buffers
-                    -- If you have a plugin like "bufdelete.nvim", you could use:
-                    -- require("bufdelete").bufdelete(bufnum, true)
                     vim.api.nvim_buf_delete(bufnum, { force = false })
                 end,
                 right_mouse_command = function(bufnum)

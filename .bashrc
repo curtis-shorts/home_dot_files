@@ -5,7 +5,7 @@
 # Helper function for PATH updates
 pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        # append to start if a second parameter is given, else append to end
+        # Append to start if a second parameter is given, else append to end
         if [[ -z $2 ]]; then
             PATH="${PATH:+"$PATH:"}$1"
         else
@@ -13,7 +13,6 @@ pathadd() {
         fi
     fi
 }
-
 pathadd $HOME/.local/bin/ 1
 pathadd $HOME/workspace/cerebras_sdk/sdk_install/cs_sdk
 pathadd /usr/local/cuda-12.6/bin
@@ -80,14 +79,10 @@ if [ -f ~/.aliases ]; then
 fi
 
 # History Settings
-HISTCONTROL=ignoreboth # Ignore leading spaces
-shopt -s histappend # Append to the end of ~/.bash_history instead of overwriting
-HISTSIZE=10000 # The size of a terminal's history buffer in # of commands
-HISTFILESIZE=100000 # The size of the ~/.bash_history file in # of commands
-# Commands to ignore in history file
-# Collect aliases to ignore (NOTE: won't match with args, e.g. lt <directory>)
-alias_list=`alias | sed -E "s/^alias ([^=]+)=.*/\1/" | perl -pe 's/\n/:/'`:test
-HISTIGNORE=${alias_list}ls:cd:pwd:exit:clear:history:top:htop:nvtop:tt-smi:deactivate:ta\ *
+HISTCONTROL=ignoreboth  # Ignore leading spaces
+shopt -s histappend     # Append to the end of ~/.bash_history instead of overwriting
+HISTSIZE=10000          # The size of a terminal's history buffer in # of commands
+HISTFILESIZE=100000     # The size of the ~/.bash_history file in # of commands
 
 # Show all options when tab autocomplete is ambiguous
 set show-all-if-ambiguous on
@@ -115,7 +110,7 @@ else
     export PS1="\[[\T] \u@\h: \w\n(\!) --> "
 fi
 
-# ls coloring for Mac, modify at https://geoff.greer.fm/lscolors/
+# ls coloring for Mac - https://geoff.greer.fm/lscolors/
 if [[ `uname` == "Darwin" ]]; then
     export LSCOLORS="gxfxcxdxbxegedabagacad"
 fi
