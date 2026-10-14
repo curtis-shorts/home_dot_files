@@ -1,35 +1,18 @@
 #!/usr/bin/env bash
+# Adapted from The Primeagen's tmux sessionizer - https://github.com/ThePrimeagen/tmux-sessionizer
 CONFIG_FILE_NAME="tmux-sessionizer.conf"
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
+LOG_FILE_NAME="tmux-sessionizer.log"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tmux-sessionizer"
 CONFIG_FILE="$CONFIG_DIR/$CONFIG_FILE_NAME"
-PANE_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/tmux-sessionizer"
+PANE_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/tmux/tmux-sessionizer"
 PANE_CACHE_FILE="$PANE_CACHE_DIR/panes.cache"
+LOG_DIR="${XDG_LOG_HOME:-$HOME/.local/share}/tmux/tmux-sessionizer"
+LOG_FILE="$LOG_DIR/$LOG_FILE_NAME"
 
-# config file example
-# ------------------------
-# # file: ~/.config/tmux-sessionizer/tmux-sessionizer.conf
-# # If set this override the default TS_SEARCH_PATHS (~/ ~/personal ~/personal/dev/env/.config)
-# TS_SEARCH_PATHS=(~/)
-# # If set this add additional search paths to the default TS_SEARCH_PATHS
-# # The number prefix is the depth for the Path [OPTIONAL]
-# TS_EXTRA_SEARCH_PATHS=(~/ghq:3 ~/Git:3 ~/.config:2)
-# # if set this override the TS_MAX_DEPTH (1)
-# TS_MAX_DEPTH=2
-# This is not meant to override .tmux-sessionizer.  At first i thought this
-# would be a good command, but i don't think its ackshually what i want.
-#
-# Instead, its a list of commands to run on windows who's index is way outside
-# of the first 10 windows.  This allows you to create as many windows in your
-# session as you would like without having your workflow interrupted by these
-# programatic windows
-#
-# how to use:
-# tmux-sessionizer -w 0 will execute the first command in window -t 69.
-# TS_SESSION_COMMANDS=(<cmd1> <cmd2>)
-#
-# TS_LOG=true # will write logs to ~/.local/share/tmux-sessionizer/tmux-sessionizer.logs
-# TS_LOG_FILE=<file> # will write logs to <file> Defaults to ~/.local/share/tmux-sessionizer/tmux-sessionizer.logs
-# ------------------------
+# Config variables
+TS_SEARCH_PATHS=(~/ ~/workspace:3 ~/Developer:3)    # Override the default search paths
+#TS_EXTRA_SEARCH_PATHS=(~/ghq:3 ~/Git:3 ~/.config:2) # Add to the default search paths with custom depths
+TS_MAX_DEPTH=2                                      # Override the max depth default of 1
 
 if [[ -f "$CONFIG_FILE" ]]; then
     source "$CONFIG_FILE"
@@ -41,7 +24,7 @@ fi
 
 if [[ $TS_LOG != "true" ]]; then
     if [[ -z $TS_LOG_FILE ]]; then
-        TS_LOG_FILE="$HOME/.local/share/tmux-sessionizer/tmux-sessionizer.logs"
+        TS_LOG_FILE="${LOG_FILE}"
     fi
 
     mkdir -p "$(dirname "$TS_LOG_FILE")"
@@ -342,3 +325,4 @@ if ! has_session "$selected_name"; then
 fi
 
 switch_to "$selected_name"
+

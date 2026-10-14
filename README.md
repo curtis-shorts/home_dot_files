@@ -48,3 +48,31 @@ To resolve, open this file and remove the tree-sitter options related to --no-bi
 vim ~/.local/share/nvim/lazy/nvim-treesitter/lua/nvim-treesitter/install.lua
 ```
 
+# Additional Utilities
+Install the tmux package manager:
+```
+git clone https://github.com/tmux-plugins/tpm ${TMUX_PLUGINS}/tpm
+```
+Install fuzzy finder (fzf):
+```
+mkdir -p ~/.local/bin
+cd "$(mktemp -d)"
+
+ver=$(curl -s https://api.github.com/repos/junegunn/fzf/releases/latest | grep -Po '"tag_name": "v\K[^"]+')
+arch=$(dpkg --print-architecture)   # amd64 or arm64
+
+curl -fLO "https://github.com/junegunn/fzf/releases/download/v${ver}/fzf-${ver}-linux_${arch}.tar.gz"
+tar xzf "fzf-${ver}-linux_${arch}.tar.gz"
+install -m 755 fzf ~/.local/bin/fzf
+```
+Install ripgrep:
+```
+VERSION=14.1.1  # Replace VERSION with the latest
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/$VERSION/ripgrep-$VERSION-x86_64-unknown-linux-musl.tar.gz
+tar xzf ripgrep-$VERSION-x86_64-unknown-linux-musl.tar.gz
+mkdir -p ~/.local/bin
+cp ripgrep-$VERSION-x86_64-unknown-linux-musl/rg ~/.local/bin/
+rm -r ripgrep-14.1.1-x86_64-unknown-linux-musl
+rm ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz
+```
+

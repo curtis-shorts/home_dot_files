@@ -25,6 +25,9 @@ alias egrep='egrep --color=auto'
 alias lt='ls -ltrh'
 alias la='ls -ltrhA'
 
+# Fuzzy find cd
+alias cdd='cd $(FZF_TMUX=1 find ~ ${PWD} ~/workspace ~/Developer ~/test_false -mindepth 1 -maxdepth 3 -type d 2> /dev/null | fzf --height=25%)'
+
 # Lazy shorthands
 alias h='history'
 alias c='clear'
